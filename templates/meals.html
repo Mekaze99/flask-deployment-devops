@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Potrawy</title>
+  </head>
+  <body>
+    <h1>Dodaj Nową Potrawę</h1>
+    <form method="post">
+      <label for="name">Nazwa:</label>
+      <input type="text" id="name" name="name" required autocomplete="off">
+      <label for="country">Kraj:</label>
+      <input type="text" id="country" name="country" required autocomplete="off">
+      <button type="submit">Dodaj</button>
+    </form>
+    
+    <h2>Lista Potraw</h2>
+    <ul>
+      {% for meal in meals %}
+        <li>{{ meal.name }} ({{ meal.country }})</li>
+      {% endfor %}
+    </ul>
+  </body>
+</html>

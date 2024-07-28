@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: init-db-config
+data:
+  init-db.sql: |
+    CREATE ROLE flaskuser WITH LOGIN PASSWORD 'flaskpass';
+    ALTER ROLE flaskuser CREATEDB;
+    CREATE DATABASE flaskdb OWNER flaskuser;
+    \c flaskdb;
+    CREATE TABLE IF NOT EXISTS meal (
+      id SERIAL PRIMARY KEY,
+      name VARCHAR(80) UNIQUE NOT NULL,
+      country VARCHAR(120) NOT NULL
+    );

@@ -1,0 +1,8 @@
+venv/
+*.env
+*.sqlite3
+Pipfile.lock
+database.db
+instance
+Pipfile
+__pycache__

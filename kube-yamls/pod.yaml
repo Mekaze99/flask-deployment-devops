@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: flask-app
+  labels:
+    app: flask-deployment
+spec:
+  containers:
+    - name: flask-app
+      image: mekaze/flask-deployment:latest
+      ports:
+        - containerPort: 5000
