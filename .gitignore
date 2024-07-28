@@ -6,3 +6,4 @@ database.db
 instance
 Pipfile
 __pycache__
+kube-yamls/flask-db-secrets-real.yaml
