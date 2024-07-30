@@ -32,7 +32,10 @@ This project is a Flask web application with a PostgreSQL database, deployed usi
 │ ├── add_meal_form.html
 │ └── meals.html
 ├── deploy.yaml
+├── tests
+│ └── test_app.py
 ├── init-db-config.yaml
+├── pytest.ini
 └── .gitignore
 
 ```
