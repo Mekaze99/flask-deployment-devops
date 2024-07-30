@@ -7,7 +7,7 @@ def client():
     app.config['TESTING'] = True
     app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
     
-    with app.test_client() as client:
+    with app.test_client() as client        :
         with app.app_context():
             db.create_all()
         yield client
@@ -17,7 +17,7 @@ def client():
 
 def test_hello_world(client):
     rv = client.get('/')
-    assert b'Hello, World!' in rv.data
+    assert b"Potrawy tutaj byku!" in rv.data
 
 def test_add_meal(client):
     rv = client.post('/meals', data=dict(
