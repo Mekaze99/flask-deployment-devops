@@ -12,6 +12,20 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    env:
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
+
+    services:
+      postgres:
+        image: postgres:latest
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_USER: testuser
+          POSTGRES_PASSWORD: testpass
+          POSTGRES_DB: testdb
+
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
@@ -26,6 +40,13 @@ jobs:
         python -m venv venv
         source venv/bin/activate
         pip install -r requirements.txt
+
+    - name: Wait for PostgreSQL to start
+      run: |
+        # Wait for PostgreSQL to start
+        until pg_isready -h localhost -p 5432 -U testuser; do
+          sleep 1
+        done
 
     - name: Run tests
       run: |
