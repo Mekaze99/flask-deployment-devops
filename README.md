@@ -8,6 +8,7 @@ This project is a Flask web application with a PostgreSQL database, deployed usi
 - [Project Structure](#project-structure)
 - [Setup and Installation](#setup-and-installation)
 - [Running the Application](#running-the-application)
+- [Testing the Aplication](#testing-the-application)
 - [Kubernetes Deployment](#kubernetes-deployment)
 - [Environment Variables](#environment-variables)
 - [Contributing](#contributing)
@@ -87,6 +88,30 @@ This project is a Flask web application with a PostgreSQL database, deployed usi
     ```
 
     The application will be available at `http://127.0.0.1:5000`.
+
+## Testing the Application
+
+1. **Set up environment variables for testing:**
+
+    Create a `pytest.ini` file in the root directory of the project and add the following:
+
+    ```ini
+    [pytest]
+    env =
+        DATABASE_URL=postgresql://testuser:testpass@localhost:5432/testdb
+    ```
+
+2. **Run tests locally:**
+
+    Ensure you have a PostgreSQL server running locally (or use Docker to start one), then run:
+
+    ```bash
+    pytest
+    ```
+
+3. **Run tests in GitHub Actions:**
+
+    Tests are configured to run automatically in GitHub Actions with a PostgreSQL server
 
 ## Kubernetes Deployment
 
