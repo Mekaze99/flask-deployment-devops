@@ -1,6 +1,6 @@
 import os
 import pytest
-from app import app, db, Meal
+from app import app, db, Meals
 
 @pytest.fixture
 def client():
