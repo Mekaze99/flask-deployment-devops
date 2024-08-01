@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import DeclarativeBase
 from sqlalchemy import Integer, String
 from sqlalchemy.orm import Mapped, mapped_column
+from prometheus_flask_exporter import PrometheusMetrics
 from dotenv import load_dotenv
 import os 
 
@@ -18,6 +19,8 @@ app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv('DATABASE_URL')
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 db = SQLAlchemy(app)
+
+metrics = PrometheusMetrics(app)
 
 class Base(DeclarativeBase):
   pass
